@@ -32,6 +32,7 @@
 
 ## React, Redux, Saga ... Material, Styled-Component
 여러 라이브러리들에 얽힌 이야기
+${props => props.xxx} 에서 ${props => props.xxx}; 콜론 안붙이면 패망.
 
 ## 마무리
 좋았다.
