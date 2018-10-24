@@ -20,6 +20,8 @@ Redux-Saga 의 관련 포스트나 문서를 읽다보면 `부수효과` 라는 
 
 내가 이해한 부수효과라는건 일반적인 동기 방식으로 동작하는 액션 -> 상태 변경 형식의 애플리케이션에서 `액션과 상태 변경 사이에 발생하는 모든 작업` 을 뜻한다.
 
+#### 일반적인 액션 -> 상태
+
 일반적인 액션 -> 상태 변경에서는 부수효과가 발생할 일이 없다.
 
 예를 들어보자. 일반적인 Redux 의 흐름도는 다음과 같다.
@@ -30,18 +32,22 @@ Redux-Saga 의 관련 포스트나 문서를 읽다보면 `부수효과` 라는 
 이 액션에서는 따로 부수효과가 없다.
 다이렉트로 action => reducer => update state 로 이어진다.
 
-<!-- 간단한 예제로 써보자.
+간단한 예제로 써보자.
 
+action creator 이다. dispatch 는 레퍼런스가 있다고 가정한다.
 ```javascript
 const showMemberDetail = () => {
-    dispatch({ type: 'user/show-detail', payload: { actedAt: new Date() } });
+    dispatch({ type: 'member/show-detail', payload: { actedAt: new Date() } });
 }
+```
 
+reducer 이다.
+```javascript
 const reduceMember = (state = {}, action) => {
     const { type } = action;
     switch(type) {
         const { payload: { actedAt } } = action;
-        case 'user/show-detail': {
+        case 'member/show-detail': {
             return {
                 ...state,
                 actedAt
@@ -52,7 +58,9 @@ const reduceMember = (state = {}, action) => {
 }
 ```
 
-Redux 를 사용한 애플리케이션에서 (React.js 든 Vue.js 든... 다른것이든) `showMemberDetail` 이 수행되면 액션 `user/show-detail` 이 dispatch 되고 `reduceMember` 는 액션을 처리하면서 새 상태를 반환할 것이다. -->
+Redux 를 사용한 애플리케이션에서 (React.js 든 Vue.js 든... 다른것이든) `showMemberDetail` 이 수행되면 액션 `user/show-detail` 이 dispatch 되고 `reduceMember` 는 액션을 처리하면서 새 상태를 반환할 것이다.
+
+#### 부수효과가 있는 액션 -> 부수효과 -> 상태
 
 하지만 이 과정의 중간에 부수효과가 발생한다면 상황은 복잡해진다.
 앞서 부수효과라는 것은 액션과 상태 변경 사이의 어떤 일이라고 표현했다. 대표적인 부수효과인 ajax 나 fetch 등의 Asynchronous 서버 요청을 예로 들어보자.
@@ -65,29 +73,96 @@ Redux 를 사용한 애플리케이션에서 (React.js 든 Vue.js 든... 다른�
 1. 서버 요청은 비동기이기 때문에 요청 중간에 다른 작업도 처리하다가 요청이 끝나면 (오류든 성공이든) 다시 액션을 dispatch 하는 임무도 맡고 있다.
 1. 이 과정에서 액션을 dispatch 하는 코드가 장황해진다.
 
-<!-- 이 과정을 다음 코드에 써보았다.
+이 과정을 다음 코드에 써보았다.
+
+action creator 이다. dispatch, fetch 는 레퍼런스가 있다고 가정한다.
+
+비동기 처리에 강점이 많은 [async - await](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function) 를 사용하였다.
+
+action creator 이다.
+
+데이터 요청 전/후로 액션이 dispatch 되며, 오류나 맞을 수 없을 떄에도 특별한 액션을 dispatch 하고 있다.
 
 ```javascript
-``` -->
+const requestMemberData = async memberId => await fetch(`/api/member/${memberId}`);
 
-윗 시퀀스에서는 부수효과로 비동기 요청을 예로 들었지만, 특정 액션이 들어올 때 화면 스크롤을 움직인다든지, 팝업을 오픈한다든지, 로깅을 하는 등의 특정 상태에 관련이 없는 것들 모두를 뜻한다고 볼 수 있다.
+const showMemberDetail = ({ memberId }) => {
+    dispatch({ type: 'member/request-detail' });
+    requestMemberData(memberId)
+        .then(member => {
+            if(!member) {
+                dispatch({ type: 'member/response-error', payload: { message: 'not found' } } });
+            }
+            dispatch({ type: 'member/response-detail', payload: { member } });
+        })
+        .catch(error => {
+            dispatch({ type: 'member/response-error', payload: { message: error.message } } });
+        });
+}
+```
 
-여기까지 읽다 보면 "이상태로도 괜찮다. 굳이 뭔가를 더 써야하나?" 라는 생각이 들지도 모르겠다. 혹은 Redux 쓰면서 일반적으로 하는거 아닌가? 여기서 더 뭔가가 필요한걸까? 라고 느낄수도 있겠다. (사실 이정도 일은 redux-thunk 가 더 단순하고 편하다)
+reducer 이다.
 
-그렇다면 실무에서 일어나는 좀더 더티하고 실전적인 예제를 들어보겠다.
+요청 진행중을 나타내는 상태와 요청 오류를 나타내는 상태 두개가 추가되었다.
+
+```javascript
+// defaultState
+const defaultState = {
+    memberLoading: false,
+    member: null,
+    errorMessage: null,
+};
+
+const reduceMember = (state = defaultState, action) => {
+    const { type, payload = {} } = action;
+    switch(type) {
+        const { payload: { actedAt } } = action;
+        case 'member/request-detail': {
+            return {
+                ...state,
+                memberLoading: true,
+                errorMessage: null,
+            }
+        }
+        case 'member/response-detail': {
+            const { member = {} } = payload;
+            return {
+                ...state,
+                memberLoading: false,
+                member,
+            }
+        }
+        case 'member/response-error': {
+            const { message = 'unknown error' } = payload;
+            return {
+                ...state,
+                memberLoading: false,
+                errorMessage: message,
+            }
+        }
+        default: return state;
+    }
+}
+```
+
+위 코드에서는 부수효과로 비동기 요청을 예로 들었지만, 특정 액션이 들어올 때 화면 스크롤을 움직인다든지, 팝업을 오픈한다든지, 로깅을 하는 등의 특정 상태에 관련이 없는 것들 모두를 뜻한다고 볼 수 있다.
+
+Redux 쓰면서 일반적으로 하는거 아닌가? 여기서 더 뭔가가 필요한걸까? 라고 느낄수도 있다. (사실 이정도 일은 redux-thunk 가 더 단순하고 편하다) 
+
+"이상태로도 괜찮다. 굳이 뭔가를 더 써야하나?"
+
+라고 생각한다면 실무에서 일어나는 좀더 더티하고 실전적인 예제를 들어보겠다.
 
 ## 그래서 뭐가 좋은데
 
 ### 단순한 Redux + 비동기 작업
+
 특정 회원을 조회하는 액션이 있다고 해보자
 그럼 보통 다음과 같은 플로우를 탈 것이다.
 
-1. 회원을 조회하는 비동기 서버 요청을 시작한다. UI의 요규사항에 따라 Loading Indicator 를 표시할수도 있기에 로딩 인디케이터 등을 활성화하는 `REQUEST_FIND_MEMBER` 등과 같은 액션이 dispatch 된다.
-1. reducer 는 이 액션으로 로딩 인디케이터, 데이터 초기화 등 상태를 업데이트한다
-1. 회원 조회 요청이 성공했다면 회원 데이터로 상태를 업데이트하기 위해 `RESPONSE_FIND_MEMBER` 등의 액션을 dispatch 한다.
-1. reducer 는 이 액션으로 로딩 인디케이터, 데이터 초기화 등 상태를 업데이트한다
-1. 혹시 발생하는 예외, Timeout, 잘못된 응답 등의 케이스에 따라 다른 액션 `REQUEST_TIMEOUT`, `BAD_RESPONSE`, `REQUEST_ERROR` 등의 액션이 선택적으로 수행된다
-1. reducer 는 이 액션의 케이스에서도 각각 알맞게 상태를 업데이트한다.
+위 부수효과가 있는 액션 예제 코드에 추가 요구사항이 필요해졌다.
+
+회원 정보를 로딩한 뒤 로딩이 끝나면 이 회원의 기본 계좌정보와 주문정보를 추가 로딩해야 한다고 가정한다.
 
 코드로 써보자
 
