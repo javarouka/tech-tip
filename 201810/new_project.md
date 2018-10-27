@@ -320,10 +320,7 @@ class MyComponent extends React.Component {
 
 적용 후 첫 로딩 스크립트의 용량이 300kb 도 안될 정도로 좋아진 걸 보고 꽤나 좋았던 기억이 난다.
 
-
-<video controls preload> 
-    <source src="d6bf5558-6734-4202-9783-21a22ab14410.mp4"></source> 
-</video>
+[![나무 파괴자](wood.png)](https://www.youtube.com/watch?v=OGQI2-Ug6n0)
 
 
 <!-- 
