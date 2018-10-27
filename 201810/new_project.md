@@ -201,9 +201,7 @@ order = vendorModule.appendVendorData(order);
 
 마침 적용하려고 하는 상태관리기 [Redux](https://lunit.gitbook.io/redux-in-korean/) 의 selector 개념과 이를 보좌해주는 [reselect](https://github.com/reduxjs/reselect) 는 이런 방식에 찰떡궁합이었다.
 
-## 도구들
-
-### 서버 개발
+## 서버 기반을 수정해보자
 
 서버 개발에서는 특별한 개선을 하기 어려웠다.
 
@@ -211,7 +209,7 @@ order = vendorModule.appendVendorData(order);
 
 패키지와 설정 파일의 분리 정도가 가능했고, 나머지 모듈 의존성 등은 크게 손댈 수 없었다.
 
-### 클라이언트 개발
+### 클라이언트 기반을 수정해보자
 
 클라이언트는 이야기가 달라서 완전한 재설정이 가능했다.
 
@@ -220,6 +218,8 @@ order = vendorModule.appendVendorData(order);
 기존의 낙후된 webpack 설정 및 의존성을 업그레이드하는걸 시작으로, 서버측을 완전한 Application Database 화를 위해 클라이언트 라우팅을 도입했다.
 
 서버는 그저 요청에 따른 비즈니스를 처리하고, 결과 데이터를 JSON 으로 응답하는걸 전제로 하고, 클라이언트는 주소 파싱으로 사용자가 원하는 컨텐츠를 노출하는 것까지 담당하게 했다. 기존에 라우팅마다 서버에 라우팅 컨트롤러와 뼈대 Template Handlbars 파일이 생기는 방식이 비효율적이라고 생각되었기 때문이다.
+
+
 
 <!-- 
 ## 서버 코드의 레이어링
