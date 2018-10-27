@@ -320,12 +320,11 @@ class MyComponent extends React.Component {
 
 적용 후 첫 로딩 스크립트의 용량이 300kb 도 안될 정도로 좋아진 걸 보고 꽤나 좋았던 기억이 난다.
 
-<p align="center">
-    <video ng-switch-when="true" width="260" height="260" loop="" autoplay="" muted="">
-        <source type="video/mp4" src="blob:d6bf5558-6734-4202-9783-21a22ab14410.mp4" />
-    </video>
-    <em>스크립트를 쪼개자~</em>
-</p>
+
+<video controls preload> 
+    <source src="d6bf5558-6734-4202-9783-21a22ab14410.mp4"></source> 
+</video>
+
 
 <!-- 
 ## 서버 코드의 레이어링
