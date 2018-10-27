@@ -168,9 +168,9 @@ order = vendorModule.appendVendorData(order);
 ### 데이터 토막치기
 
 <p align="center">
-    <img style="min-width: 320px; max-width: 550px;" src="Dr Salvador.jpg" alt="부우우우우웅!!!">
+    <img width="320" src="Dr Salvador.jpg" alt="닥터 살바도르" title="닥터 살바도르">
     <br/>
-    <em>토막쳐보자......</em>
+    <em>토막쳐보자... 부우우우우웅!!</em>
 </p>
 
 최근주문목록을 조합한다고 가정해보자
