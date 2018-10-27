@@ -45,7 +45,7 @@ MSA(`M`icro `S`ervice `A`rchitecture) 환경에서 동시다발적으로 벌어�
 <p align="center">
     <img src="zealot.jpeg" alt="버틸...">
     <br/>
-    <em>이 분야의 대부 Zealot</em>
+    <em>We cannot hold...?</em>
 </p>
 
 테스트 코드 부재는 예사이고, 팀원들끼리 충분한 커뮤니케이션이 없으면 중복된 코드가 각자의 개성으로 이곳저곳에서 자라난다.
