@@ -331,12 +331,13 @@ class MyComponent extends React.Component {
 
 그래도 노력이 나를 조금이나마 동정했는지, 몇몇 컴포넌트는 재사용성을 확보할 수 있었다. 디자인 요소를 배제할수록, 도메인 이해도가 높을 수록 재사용성이 높았던 것 같다.
 
+- PureComponent 를 최대한 다수를 생성하려고 했다. 재활용의 시작이 되니까. React 16.6 에서는 React.memo 라는 것도 지원해서 PureComponent 사용이 더 좋아졌다.
 - 재활용 요소는 가급적 [React.Fragment](https://reactjs.org/docs/fragments.html) 로 래핑한다. 이 요소가 어느 레이아웃으로 재활용될지 모르기 때문이다.
 - 스타일 요소는 하나하나를 스타일링하지 말고 Styled-Component 로 대체할 수 있게 디자인한다.
 
 <!-- - 각 팝업 버튼 재사용 (버튼을 컨테이너화해서 property 만으로 액션과 부수효과를 처리했다)
 - 로직 UI 재사용 (전체취소, 확인요청 등의 비즈니스 덩어리를 정해진 프로퍼티만으로 표현할 수 있었다)
-- PureComponent 를 최대한 다수를 생성하려고 했다. 재활용의 시작이 되니까. -->
+-->
 
 ### 사용자 액션 추적 / 에러 리포트
 
