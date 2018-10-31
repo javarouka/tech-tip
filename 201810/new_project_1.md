@@ -116,9 +116,9 @@ DTO 도 구분했다.
 
 기본적으로 Request 로 받는 Condition 류를 제외한 모든 DTO 에는 모든 필드가 `final` 로 불변객체이다.
 
-<p align="center">
-    <strong>모든 객체는 불변이다</strong>
-</p>
+<blockquote>
+    <p align="center">모든 객체는 불변 (immutable) 이 좋다</p>
+</blockquote>
 
 불변이 아닐 경우 각 로직이나 레이어를 거치면서 전달되는 객체의 필드가 실제 값이 있는지, 중간에 값이 어떻게 변하는지한 레이어만 보고서는 추적이 되지 않기 때문이다.
 
