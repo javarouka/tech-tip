@@ -199,14 +199,12 @@ order = vendorModule.appendVendorData(order);
 여기서 다시 특정 주문의 상세를 보고 싶다고 한다면 앞서 요청한 상품상세와 각 메타데이터, 업체, 결제, 취소 정보는 요청하지 않아도 된다.
 필요한 상세 데이터를 추가 요청한뒤 데이터를 조합하면 끝이다.
 
-(기존이면 위의 플로우를 서버에서 처리하고 있었을 것이다.)
-
 그리고 다른 주문번호를 보다가 다시 같은 주문 상세를 조회할 경우, 이미 로딩된 정보를 활용할 수도 있다.
 물론 갱신이 자주 되는 데이터는 만료 관리가 필요하거나 아예 새로 로딩해야 할 때도 있지만, 대부분의 경우 이러한 방식이 훨씬 유리하다.
 
 이렇게 데이터를 최대한 분할하여 재활용성과 서버 자원 낭비를 줄이고 성능 향상도 고려해보기로 했다. 물론 모든 데이터를 토막치는게 아닌 비즈니스나 UI 상황, 효율및 결합도에 따라 데이터 구성을 하여 합치기도 했다.
 
-마침 적용하려고 하는 상태관리기 [Redux](https://lunit.gitbook.io/redux-in-korean/) 의 selector 개념과 이를 보좌해주는 [reselect](https://github.com/reduxjs/reselect) 는 이런 방식에 찰떡궁합이었다.
+마침 적용하려고 하는 상태관리기 [Redux](https://lunit.gitbook.io/redux-in-korean/) 의 selector 개념과 이를 보좌해주는 [Reselect](https://github.com/reduxjs/reselect) 는 이런 방식에 찰떡궁합이었다.
 
 ## 서버 기반을 수정해보자
 
@@ -268,6 +266,8 @@ Redux 는 기본적으로 단일 스토어를 추천한다.
 사용한 라이브러리는 [Univasal-Router](https://github.com/kriasoft/universal-router) 이다.
 
 단순하지만 프로젝트에서 필요로 하는 모든 기능이 들어있었다.
+
+
 
 ### 스크립트 용량 축소
 
