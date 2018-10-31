@@ -287,7 +287,7 @@ Redux 는 기본적으로 단일 스토어를 추천한다.
 
 결국 React Router 에서 Route 기능만을 빌려와서 직접 라우팅 시스템을 구현할 수밖엔 없었다.
 
-겸사겸사 React Router 에서 지원하기 좀 애매한 동적 모듈 로딩 라우팅도 적용했다. (개발 당시에는 없었는데 지금 버전에서는 잘 지원하고 있더라...)
+겸사겸사 React Router 에서 지원하기 좀 애매한 동적 모듈 로딩 라우팅도 적용했다. (개발 당시에는 없었는데 [지금 버전에서는 잘 지원](https://reactjs.org/docs/code-splitting.html#reactlazy)하고 있더라...)
 
 사용한 라이브러리는 [Univasal-Router](https://github.com/kriasoft/universal-router) 이다.
 
