@@ -19,7 +19,7 @@
 그만큼 의존성이 문어발 식으로 연결되어있고, 그 만큼 타 도메인의 변화에 영향을 많이 받는다.
 
 <p align="center">
-    <img src="octocat.png" alt="나...?">
+    <img src="img/octocat.png" alt="나...?">
     <br/>
     <em>나 말하나...?</em>
 </p>
@@ -31,7 +31,7 @@
 MSA(`M`icro `S`ervice `A`rchitecture) 환경에서 동시다발적으로 벌어지는 각 도메인들의 변화를 추적하고 반영하다보면, 쉴새없는 오류와, 호환성 문제를 겪게 된다.
 
 <p align="center">
-    <img src="zealot.jpeg" alt="버틸...">
+    <img src="img/zealot.jpeg" alt="버틸...">
     <br/>
     <em>We cannot hold...?</em>
 </p>
@@ -105,7 +105,7 @@ Collector 는 각 데이터를 Aggregation 하는 레이어였다.
 DTO 도 구분했다.
 
 <p align="center">
-    <img src="dto.jpeg" alt="박스">
+    <img src="img/dto.jpeg" alt="박스">
     <br/>
     <em>데이터의 포장에도 각자의 목적이 있다</em>
 </p>
@@ -153,7 +153,7 @@ order = vendorModule.appendVendorData(order);
 다양한 도메인을 한번에 다루는 CS 특성상 여러 도메인의 데이터를 조합하는 경우가 많다.
 
 <p align="center">
-    <img src="bibim.jpeg" alt="버틸...">
+    <img src="img/bibim.jpeg" alt="비빔밥">
     <br/>
     <em>재료를 잘 섞어야 맛있다.</em>
 </p>
@@ -178,7 +178,7 @@ order = vendorModule.appendVendorData(order);
 ### 데이터 토막치기
 
 <p align="center">
-    <img width="320" src="Dr Salvador.jpg" alt="닥터 살바도르" title="닥터 살바도르">
+    <img width="320" src="img/Dr Salvador.jpg" alt="닥터 살바도르" title="닥터 살바도르">
     <br/>
     <em>토막쳐보자... 부우우우우웅!!</em>
 </p>
