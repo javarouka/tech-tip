@@ -403,7 +403,7 @@ webpack-dev-server 와 mock 연동에는 [express-http-proxy](https://www.npmjs.
 
 추가 개발은 proxy 에 https 지원을 추가하고 npm 스크립트를 몇개 수정한 것 뿐으로 훌륭한 실서버 <--> webpack-dev-server 의 연계가 만들어졌다.
 
-이 작업으로 클라이언트 개발은 매우 편해져서 작업 효율이 크게 증가했다.
+이 작업으로 클라이언트 개발 매우 편해져서 작업 효율이 크게 증가했다.
 
 ## 아직이다
 
