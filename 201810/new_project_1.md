@@ -1,6 +1,6 @@
 # 신규 통합 CS 시스템 관리 개발기 # 설계편 #
 
-* [CS(Customer Service) 관리 시스템 개발](#cs-customer-service-----------)
+* [CS(Customer Service) 관리 시스템 개발](#CS(Customer Service) 관리 시스템 개발)
 * [버틸수가 없다](#-------)
 * [새로운 방법](#------)
     + [Layer](#layer)
