@@ -66,3 +66,6 @@ Car superMyCar = new Car.Builder('내 애마')
     .color(Color.INDIGO)
     .build();
 ```
+
+## Lombok!
+(@Builder)[https://projectlombok.org/features/Builder]
