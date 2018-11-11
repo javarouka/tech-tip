@@ -68,4 +68,4 @@ Car superMyCar = new Car.Builder('내 애마')
 ```
 
 ## Lombok!
-(@Builder)[https://projectlombok.org/features/Builder]
+[@Builder](https://projectlombok.org/features/Builder)
