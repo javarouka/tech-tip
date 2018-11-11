@@ -58,3 +58,11 @@ public Car {
     }
 }
 ```
+
+## 사용
+```java
+Car superMyCar = new Car.Builder('내 애마')
+    .price(9999999999)
+    .color(Color.INDIGO)
+    .build();
+```
