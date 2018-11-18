@@ -20,7 +20,6 @@
 
 <p align="center">
     <img src="img/octocat.png" alt="나...?">
-    <br/>
     <em>나 말하나...?</em>
 </p>
 
