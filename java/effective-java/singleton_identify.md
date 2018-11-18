@@ -10,7 +10,7 @@ Java 에서의 [Primitive Data Types](https://docs.oracle.com/javase/tutorial/ja
 import java.io.Serializable;
 
 /**
- * Serialize 를 구현해서 Serialize 가능하게 한다.
+ * Serializable 를 구현해서 Serialize 가능하게 한다.
  */
 public class Sleep implements Serializable {
     
