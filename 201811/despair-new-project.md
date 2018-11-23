@@ -108,7 +108,7 @@ Public Path 가 고정되니 배포 Scope 으로 asset 을 요청하게 되고 �
 
 - 각 컴포넌트는 가급적 [React.Fragment](https://reactjs.org/docs/fragments.html) 로 래핑한다
 - 부모 레벨이 자식 컴포넌트의 스타일을 지정할 수 있게 한다. StyleComponent 로 자식을 감싸서 사용한다는 뜻이다
-- StyleComponent 든 DataComponent 든 네이밍과 파일 단위는 동일하게 한다
+- StyleComponent 든 DataComponent 든 네이밍과 파일 단위는 동일하게 한다. 사용 측에서는 이 컴포넌트가 Style 인지 Data 인지 알 필요가 없다.
 
 현재 (2018.11.23) 운영 배포된 소스는 위의 룰을 지키지 못했다. 천천히 수정해야 할 일이다.
 
