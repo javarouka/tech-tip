@@ -1,5 +1,7 @@
 # 신규 통합 CS 시스템 관리 개발기 # 혼란편 #
 
+[전 글: 신규 통합 CS 시스템 관리 개발기 # 설계편 #](https://blog.javarouka.me/2018/10/28/new_project_1/#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%86%A0%EB%A7%89%EC%B9%98%EA%B8%B0)
+
 ## 생각 이상으로 많이 생기는 Behavior, DTO 문제
 
 단순 조회라도 Controller -> Service -> Behavior -> Repository 로 이어진다.
