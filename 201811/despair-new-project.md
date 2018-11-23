@@ -14,7 +14,7 @@
 
 하지만 정석은 언제나 통한다고 생각한다. 많은 시간을 들여 분석해가며 설계하면 이런 점까지 커버할 수 있는 시스템을 만들 수 있다. 하지만 이번에는 일단 초기에 만든 규칙대로 다수의 파일 생성도 감안하며 가는 방식을 선택했다.
 
-이 방법을 고민하다보면 [DDD](https://docs.microsoft.com/ko-kr/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/ddd-oriented-microservice) 로 가는 것이 답일 것 같은데, 지식이 얕아서 잘은 알 수가 없다. 많이 아쉬운 부분이다. 리팩토링을 통해서라도 개선하고 싶다.
+이 방법을 고민하다보면 [DDD](https://docs.microsoft.com/ko-kr/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/ddd-oriented-microservice) 로 가는 것이 답일 것 같은데, 지식이 얕아서 잘은 알 수가 없어 많이 아쉽다. 공부가 부족한걸 매번 탓하지만 안하는 나의 뇌가 무섭기도 하다. 후에 리팩토링을 통해서라도 개선하고 싶다.
 
 ## API 분할과 정의 문제
 
