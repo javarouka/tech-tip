@@ -63,3 +63,34 @@ function area(s: Shape) {
     }
 }
 ```
+
+## Proxyfy
+
+```typescript
+type Proxy<T> = {
+    get(): T;
+    set(value: T): void;
+}
+
+type Proxify<T> = {
+    [P in keyof T]: Proxy<T[P]>;
+}
+
+class PX<T> implements Proxy<T> {
+    constructor(private value: T) {}
+    get(): T { return this.value;}    
+    set(value: T) { this.value = value; }    
+} 
+
+function proxify<T>(o: T): Proxify<T> {
+    let result = {} as Proxify<T>;
+    for (const k in o) {
+        result[k] = new PX(o[k]);
+        // result[k] = {
+        //     get() {return o[k]},
+        //     set(value) {o[k] = value;}
+        // };
+    }
+    return result;
+}
+```
