@@ -30,6 +30,8 @@ type LinkedList<T> = T & { next: LinkedList<T> };
 ```
 
 ## 하지만 순환 참조는 안된다
+
+선언의 오른쪽에 나오는 건 불가능.
 ```
 type Cir = Array<Cir>;
 ```
