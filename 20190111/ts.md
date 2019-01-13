@@ -28,3 +28,8 @@ type Tree<T> = {
 
 type LinkedList<T> = T & { next: LinkedList<T> };
 ```
+
+## 하지만 순환 참조는 안된다
+```
+type Cir = Array<Cir>;
+```
