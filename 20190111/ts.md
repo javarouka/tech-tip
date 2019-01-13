@@ -16,3 +16,15 @@
  - 덕 타이핑이 적극적으로 언어 레벨에 쓰이고 있다.
  - typeof, keyof
  - 할당된 변수에 뭔가를 할당할때 타입체크가 들어간다 (당연한가...)
+ 
+# Type 
+## Type Alias 는 자가 참조 가능하다
+```typescript
+type Tree<T> = {
+    value: T;
+    left: Tree<T>;
+    right: Tree<T>;
+}
+
+type LinkedList<T> = T & { next: LinkedList<T> };
+```
