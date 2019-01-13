@@ -32,6 +32,34 @@ type LinkedList<T> = T & { next: LinkedList<T> };
 ## 하지만 순환 참조는 안된다
 
 선언의 오른쪽에 나오는 건 불가능.
-```
+```typescript
 type Cir = Array<Cir>;
+```
+
+## 유니온 타입의 식별 (Discriminated Unions)
+
+```typescript
+type Shape = Square | Rectangle | Circle;
+
+interface Square {
+    kind: "square";
+    size: number;
+}
+interface Rectangle {
+    kind: "rectangle";
+    width: number;
+    height: number;
+}
+interface Circle {
+    kind: "circle";
+    radius: number;
+}
+
+function area(s: Shape) {
+    switch (s.kind) {
+        case "square": return s.size * s.size;
+        case "rectangle": return s.height * s.width;
+        case "circle": return Math.PI * s.radius ** 2;
+    }
+}
 ```
