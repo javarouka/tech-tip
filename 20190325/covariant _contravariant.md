@@ -16,7 +16,7 @@ any.add(new Twice("미나"));
 GirlSinger a = any.get(0);
 
 // 이해가 안된다면 다음 구문을 보자
-// 할당할 수 있다. any 의 타입은 GirlSinger의 반공변이기에 뭐든 올 수 있다.
+// any 의 타입은 GirlSinger의 반공변이기에 뭐든 올 수 있다.
 // 그러므로 다음 구문은 적법하다.
 List<? super GirlSinger> any = Lists.newArrayList(1,2,3,4);
 
