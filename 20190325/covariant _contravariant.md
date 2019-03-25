@@ -6,7 +6,7 @@
 ```java
 List<? super GirlSinger> any = Lists.newArrayList();
 
-// 걸그룹의 상위 타입은 뭐든 추가 가능
+// 걸그룹의 하위 타입은 뭐든 추가 가능
 any.add(new GirlsGeneration("태연"));
 any.add(new Twice("미나"));
 
