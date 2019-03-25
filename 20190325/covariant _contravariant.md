@@ -61,3 +61,6 @@ val aGirl:GirlSinger = ab.get(0)
 // Error. 실제 그룹이 소녀시대가 아닌 다른 걸그룹(트와이스)일 수 있기에, 추가할 수 없다.
 ab.add(GirlsGeneration("태연"))
 ```
+
+## 다른 예제
+https://gist.github.com/javarouka/a9deb84708dacec5e39aff5ca1533a01
