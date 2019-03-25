@@ -1,7 +1,7 @@
 # 반공변(contravariant)
 
 - Java: ? super T
-- Kotlin in T
+- Kotlin: in T
 
 ```java
 // @Java 버전의 반공변 제한 리스트
@@ -32,7 +32,7 @@ val a:GirlSinger = cd.get(0) // Error.
 # 공변(covariant)
 
 - Java: ? extends T
-- Kotlin out T
+- Kotlin: out T
 
 ```java
 // @Java
