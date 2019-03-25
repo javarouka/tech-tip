@@ -10,7 +10,7 @@ List<? super GirlSinger> any = Lists.newArrayList();
 any.add(new GirlsGeneration("태연"));
 any.add(new Twice("미나"));
 
-// 걸그룹의 반공변이기 때문에 요소들은 걸그룹의 상위 타입이다.
+// 걸그룹의 반공변이기 때문에 요소들은 걸그룹을 상위로 하는 타입이다.
 // 때문에 걸그룹이 아니라 걸그룹의 수퍼타입인 그냥 여자, 그 이상인 사람이 될 수 있다.
 // Error. 다시말해 저 리스트가 어떤 구성원을 가지는지 알 수 없다.
 GirlSinger a = any.get(0);
@@ -23,7 +23,7 @@ val cd: MutableList<in GirlSinger> = mutableListOf() // 반공변 리스트
 cd.add(GirlsGeneration("태연"))
 cd.add(Twice("미나"))
 
-// Error. a 의 타입은 걸그룹의 반공변이기 때문에 위 java 예제와 같다.
+// Error. a 의 타입은 걸그룹의 반공변(걸그룹을 상위로 하는 타입)이기 때문에 위 java 예제와 같다.
 val a:GirlSinger = cd.get(0)
 ```
 
