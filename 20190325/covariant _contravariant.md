@@ -10,10 +10,18 @@ List<? super GirlSinger> any = Lists.newArrayList();
 any.add(new GirlsGeneration("태연"));
 any.add(new Twice("미나"));
 
-// 걸그룹의 반공변이기 때문에 요소들은 걸그룹을 상위로 하는 타입이다.
-// 때문에 걸그룹이 아니라 걸그룹의 수퍼타입인 그냥 여자, 그 이상인 사람이 될 수 있다.
-// Error. 다시말해 저 리스트가 어떤 구성원을 가지는지 알 수 없다.
+// Error. 걸그룹의 반공변이기 때문에 요소들은 걸그룹을 상위로 하는 타입이다.
+// 다시말해 저 리스트가 어떤 구성원을 가지는지 알 수 없다.
+// 극단적으로 오브젝트의 리스트일수도 있다. 따라서 다음 문은 오류.
 GirlSinger a = any.get(0);
+
+// 이해가 안된다면 다음 구문을 보자
+// 할당할 수 있다. any 의 타입은 GirlSinger의 반공변이기에 뭐든 올 수 있다.
+// 그러므로 다음 구문은 적법하다.
+List<? super GirlSinger> any = Lists.newArrayList(1,2,3,4);
+
+// Error. 컴파일러가 어떻게 캐스팅 코드를 넣어야 할지 모르게 된다.
+GirlSinger b = any.get(0);
 ```
 
 ```kotlin
