@@ -70,3 +70,4 @@ ab.add(GirlsGeneration("태연"))
 
 ## 다른 예제
 https://gist.github.com/javarouka/a9deb84708dacec5e39aff5ca1533a01
+https://gist.github.com/javarouka/974e7db0b88b616da80cfdec90df62a7
